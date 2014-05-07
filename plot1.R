@@ -1,0 +1,7 @@
+par("mar" = c(5.1, 5.1, 4.1, 2.1))
+par("mfrow" = c(1,1))
+data <- read.csv("data.txt", header=TRUE, sep=";")
+data$DateTime <- strptime(paste(data$Date, data$Time, sep  = " "), "%d/%m/%Y %H:%M:%S")
+hist(data$Global_active_power, col="Red", main="Global Active Power", xlab="Global Active Power (kilowatts)")
+dev.copy(png, file = "plot1.png") 
+dev.off()
